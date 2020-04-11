@@ -26,7 +26,7 @@ def break_blocks(p, start, stop, width = 1):
 				print("............")
 	start.sort()
 	stop.sort()
-	print(start, stop)
+	print(start, stop) 
 
 
 def merge_blocks(p, start, stop, width = 1):
