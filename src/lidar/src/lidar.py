@@ -1,51 +1,54 @@
 import rospy
-import sensor_msgs.point_cloud2 as pc2
-from sensor_msgs.msg import PointCloud2, LaserScan
-from laser_geometry.laser_geometry import LaserProjection
+from sensor_msgs.msg import LaserScan
 import numpy as np
 
-lp = LaserProjection()
-pub = rospy.Publisher("cloud", PointCloud2, queue_size=100)
-
 def create_blocks(R, start, stop):
-	j = 0
 	for i in range(len(R)):
-		if R[i] != np.inf:
-			j = j + 1
 		if R[i - 1] == np.inf and R[i] != np.inf:
-			start.append(j)
+			start.append(i)
 		if R[i - 1] != np.inf and R[i] == np.inf:
-			stop.append(j-1)
+			stop.append(i-1)
+
+	if stop[0] < start[0]:
+		start[-1] = start[-1] - 360
+		start.sort()
 
 def break_blocks(p, start, stop, width = 1):
-	for i in range(len(p)):
-		d = np.sqrt((p[i-1][0] - p[i][0]) ** 2 +
-					(p[i-1][1] - p[i][1]) ** 2	)
-		if (d > width):
-			stop.append(p[i-1][4])
-			stop.sort()
-			start.append(p[i][4])
-			start.sort()
+	for n,s in enumerate(start):
 
-# def merge_blocks(p, start, stop, width = 1):
-# 	if (start[0] < stop[0]):
-# 		for i in range(len(start)):
-# 			d = np.sqrt((p[i-1][0] - p[i][0]) ** 2 +
-# 					(p[i-1][1] - p[i][1]) ** 2	)
-# 	else:
-# 		for i in range(len(stop)):
-# 			d = np.
+		for i in range(s, stop[n]):
+			print(i, start[n], stop[n])
+			d = np.sqrt((p[i][0] - p[i+1][0]) ** 2 +
+						(p[i][1] - p[i+1][1]) ** 2	)
+			if (d > width):
+				stop.append(i - 1)
+				start.append(i)
+				print("............")
+	start.sort()
+	stop.sort()
+	print(start, stop)
+
+
+def merge_blocks(p, start, stop, width = 1):
+	for i, s in enumerate(start):
+		e = stop[i - 1]
+		d = np.sqrt((p[s][0] - p[e][0]) ** 2 +
+					(p[s][1] - p[e][1]) ** 2)
+		if (d < width):
+			start.pop(i)
+			stop.pop(i-1)
 
 def main_function(R, P):
 	start = []
 	stop = []
 	create_blocks(R, start, stop)
-	# print_data(R, start, stop)
-	# print("***************************")
-	# break_blocks(P, start, stop)
-	# merge_blocks()
 	print_data(R, start, stop)
-	print_data(P, start, stop)
+	break_blocks(P, start, stop)
+	print(start, stop)
+	print(len(start), len(stop))
+	# print("%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+	# merge_blocks(P, start, stop)
+	# print_data(R, start, stop)
 
 def print_data(data, start, stop):
 	for i in range(len(data)):
@@ -57,15 +60,15 @@ def print_data(data, start, stop):
 
 def callback(data):
 	R = data.ranges
-	cloud = lp.projectLaser(data)
-	pub.publish(cloud)
-	point_gen = pc2.read_points(cloud)
-	P = list(point_gen)
+	P = []
+	for i, r in enumerate(R):
+		x = r * np.cos(i * np.pi / 180 - 3.12413907051)
+		y = r * np.sin(i * np.pi / 180 - 3.12413907051)
+		P.append((x, y))
 	main_function(R, P)
 
 def listener():
 	rospy.init_node('lidar', anonymous=True)
-
 	rospy.Subscriber("scan", LaserScan, callback)
 	rospy.spin()
 
