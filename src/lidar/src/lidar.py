@@ -26,8 +26,7 @@ def break_blocks(p, start, stop, width = 1):
 				print("............")
 	start.sort()
 	stop.sort()
-	print(start, stop) 
-
+	print(start, stop)
 
 def merge_blocks(p, start, stop, width = 1):
 	for i, s in enumerate(start):
@@ -37,6 +36,12 @@ def merge_blocks(p, start, stop, width = 1):
 		if (d < width):
 			start.pop(i)
 			stop.pop(i-1)
+
+def clustering(p, start, stop):
+	for i in range(len(start)):
+		x = p[stop[i]] - p[start[i]]
+		if (x < 5):
+			O = p[]
 
 def main_function(R, P):
 	start = []
