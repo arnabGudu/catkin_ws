@@ -43,6 +43,7 @@ def clustering(P, start, stop):
 		print("...............")
 		X = P[start[i] : stop[i]]
 		n = len(X)
+
 		if (n < 5 and n > 0):
 			O = (X[0] + X[-1]) / 2
 			d = np.sqrt(np.sum( (X - O) ** 2, axis = 0))
@@ -71,21 +72,38 @@ def main_function(R, P):
 	# merge_blocks(P, start, stop)
 	# print_data(R, start, stop)
 	# clustering(P, start, stop)
+	publish_pointCloud(P, start, stop)
 
-def publish_pointCloud(P):
+def publish_pointCloud(P, start, stop):
 	pc = PointCloud()
-	pub = rospy.Publisher("cloud2", PointCloud, queue_size=100)
+	pub = rospy.Publisher("cloud", PointCloud, queue_size=100)
 	header = std_msgs.msg.Header()
 	header.stamp = rospy.Time.now()
 	header.frame_id = 'laser'
 	pc.header = header
-	for p in P:
-		if (p[0] != np.inf):
-			pc.points.append(Point32(p[0],p[1],0))
-	ch_rgb = ChannelFloat32()
-	ch_rgb.name = "rgb"
-	ch_rgb.values = (255,255,255)
-	pc.channels.append(ch_rgb)
+	pc.points = [Point32(p[0], p[1], 0) for p in P
+				if (p[0] != np.inf and p[0] != -np.inf)]
+
+	clst_color = np.array(np.random.choice(range(256), size=(len(start),3)))
+	# print(clst_color)
+	color = np.zeros((len(pc.points), 3))
+	k = 0
+	for i in range(len(start)):
+		for j in range(stop[i] - start[i] + 1):
+			color[k] = np.array(clst_color[i])
+			k = k + 1
+
+	# http://wiki.ros.org/rviz/DisplayTypes/PointCloud
+	r = ChannelFloat32(name = 'r')
+	g = ChannelFloat32(name = 'g')
+	b = ChannelFloat32(name = 'b')
+	# color = [int(c) for c in bin(i)[2:]]	# decimal to bin list
+	r.values = list(color[:, 0])
+	g.values = list(color[:, 1])
+	b.values = list(color[:, 2])
+	pc.channels.append(r)
+	pc.channels.append(g)
+	pc.channels.append(b)
 	pub.publish(pc)
 
 def print_data(data, start, stop):
@@ -104,8 +122,7 @@ def callback(data):
 		y = r * np.sin(i * np.pi / 180 - 3.12413907051)
 		P.append((x, y))
 	P = np.array(P)
-	publish_pointCloud(P)
-	# main_function(R, P)
+	main_function(R, P)
 
 def listener():
 	rospy.init_node('lidar', anonymous=True)
