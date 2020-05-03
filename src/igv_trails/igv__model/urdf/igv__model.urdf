@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="igv__model">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.611594942570263 0.901280819914967 0.66978157390554"
+        rpy="0 0 0" />
+      <mass
+        value="53.786996865262" />
+      <inertia
+        ixx="2.65154052231408"
+        ixy="2.74635736940795E-08"
+        ixz="3.31822311322078E-08"
+        iyy="3.3683116234887"
+        iyz="0.00211852268869227"
+        izz="1.73267246165109" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://igv__model/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://igv__model/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="wL">
+    <inertial>
+      <origin
+        xyz="-0.000320615714433203 2.66762272949084E-06 2.05391259555654E-15"
+        rpy="0 0 0" />
+      <mass
+        value="4.52967252160995" />
+      <inertia
+        ixx="0.12384573320679"
+        ixy="3.21146348067842E-08"
+        ixz="-1.59354057853947E-17"
+        iyy="0.0627755197188864"
+        iyz="5.26885789082967E-07"
+        izz="0.0627755406329626" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://igv__model/meshes/wL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://igv__model/meshes/wL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wL"
+    type="revolute">
+    <origin
+      xyz="0.20862 -0.28297 0.6883"
+      rpy="-1.6617 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="wL" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wR">
+    <inertial>
+      <origin
+        xyz="-0.000320615469261432 2.6676200137743E-06 1.4432899320127E-15"
+        rpy="0 0 0" />
+      <mass
+        value="4.52967714432559" />
+      <inertia
+        ixx="0.123845078210674"
+        ixy="3.21146424226112E-08"
+        ixz="-2.70080093172368E-16"
+        iyy="0.0627751904020829"
+        iyz="5.26844366386531E-07"
+        izz="0.0627752118408753" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://igv__model/meshes/wR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://igv__model/meshes/wR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wR"
+    type="revolute">
+    <origin
+      xyz="1.0146 -0.28297 0.6883"
+      rpy="-2.7498 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wR" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="cL">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0583079596506267" />
+      <inertia
+        ixx="8.25510018398484E-05"
+        ixy="1.41809747728069E-23"
+        ixz="3.24950877890228E-21"
+        iyy="4.38191437717807E-05"
+        iyz="0"
+        izz="4.38191437717808E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://igv__model/meshes/cL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://igv__model/meshes/cL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cL"
+    type="revolute">
+    <origin
+      xyz="0.32162 -1.4653 0.51534"
+      rpy="1.5615 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="cL" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="cR">
+    <inertial>
+      <origin
+        xyz="1.11022302462516E-16 0 2.22044604925031E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.0583079596506258" />
+      <inertia
+        ixx="8.25510018398474E-05"
+        ixy="-7.40632462136777E-23"
+        ixz="-5.70251001731993E-21"
+        iyy="4.38191437717802E-05"
+        iyz="-2.91167575618666E-22"
+        izz="4.38191437717802E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://igv__model/meshes/cR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://igv__model/meshes/cR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cR"
+    type="revolute">
+    <origin
+      xyz="0.90162 -1.4654 0.51534"
+      rpy="1.5615 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="cR" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

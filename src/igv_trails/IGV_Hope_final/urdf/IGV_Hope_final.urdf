@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="IGV_Hope_final">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.611589957835898 -0.745532635426189 0.945939041022644"
+        rpy="0 0 0" />
+      <mass
+        value="44.5648314822974" />
+      <inertia
+        ixx="2.4036532741308"
+        ixy="-5.84742567718951E-10"
+        ixz="7.74458451936004E-09"
+        iyy="1.60700059119746"
+        iyz="-0.00211279641365184"
+        izz="3.24263574032278" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="wheel_R">
+    <inertial>
+      <origin
+        xyz="1.01429821316842 -0.282974170069841 0.688295348424191"
+        rpy="0 0 0" />
+      <mass
+        value="4.52967714432559" />
+      <inertia
+        ixx="0.123845078210674"
+        ixy="-2.96811424171228E-08"
+        ixz="-1.22629540793338E-08"
+        iyy="0.0627748216659847"
+        iyz="3.65641107668744E-07"
+        izz="0.0627755805769735" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/wheel_R.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/wheel_R.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_R"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_R" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wheel_L">
+    <inertial>
+      <origin
+        xyz="0.208939444352116 -0.282971462341669 0.688293710452456"
+        rpy="0 0 0" />
+      <mass
+        value="4.52967252160995" />
+      <inertia
+        ixx="0.12384573320679"
+        ixy="-2.91634605290897E-09"
+        ixz="3.19819432566958E-08"
+        iyy="0.0627754451623574"
+        iyz="5.20087182886419E-07"
+        izz="0.0627756151894915" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/wheel_L.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/wheel_L.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_L"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_L" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="caster_R">
+    <inertial>
+      <origin
+        xyz="0.901618828637683 -1.44092117493007 0.562279678724981"
+        rpy="0 0 0" />
+      <mass
+        value="0.0230998988639432" />
+      <inertia
+        ixx="1.56673810680244E-05"
+        ixy="1.80850202027094E-20"
+        ixz="6.9701547563894E-21"
+        iyy="1.69826688718332E-05"
+        iyz="-3.30600166545721E-06"
+        izz="1.85245559570427E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/caster_R.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/caster_R.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_R"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="caster_R" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="caster_WR">
+    <inertial>
+      <origin
+        xyz="0.901618828637683 -1.46535723709494 0.515338363641454"
+        rpy="0 0 0" />
+      <mass
+        value="0.0583079596506258" />
+      <inertia
+        ixx="8.25510018398473E-05"
+        ixy="5.70157941257323E-21"
+        ixz="1.26878147034873E-22"
+        iyy="4.38191437717802E-05"
+        iyz="-2.87644518608692E-22"
+        izz="4.38191437717802E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/caster_WR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/caster_WR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_WR"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="caster_R" />
+    <child
+      link="caster_WR" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="caster_L">
+    <inertial>
+      <origin
+        xyz="0.321618828637683 -1.44091156462329 0.562279678724981"
+        rpy="0 0 0" />
+      <mass
+        value="0.0230998988639432" />
+      <inertia
+        ixx="1.56673810680244E-05"
+        ixy="1.32494575224175E-20"
+        ixz="-8.56562928967032E-21"
+        iyy="1.69826688718332E-05"
+        iyz="-3.30600166545722E-06"
+        izz="1.85245559570427E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/caster_L.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/caster_L.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_L"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="caster_L" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="caster_WL">
+    <inertial>
+      <origin
+        xyz="0.321618828637683 -1.46534762678815 0.515338363641454"
+        rpy="0 0 0" />
+      <mass
+        value="0.0583079596506267" />
+      <inertia
+        ixx="8.25510018398484E-05"
+        ixy="-3.24923804164372E-21"
+        ixz="-4.42781316654474E-23"
+        iyy="4.38191437717808E-05"
+        iyz="2.74634195419452E-22"
+        izz="4.38191437717808E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/caster_WL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://IGV_Hope_final/meshes/caster_WL.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_WL"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="caster_L" />
+    <child
+      link="caster_WL" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+</robot>
